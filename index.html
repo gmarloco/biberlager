@@ -10,708 +10,195 @@
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --forest:  #2D5016;
     --lime:    #C2D348;
     --charcoal:#27291E;
     --cream:   #EAE4D4;
     --white:   #FFFFFF;
-    --forest-light: #3a6a1d;
     --lime-dark: #a0b030;
-    --text-on-dark: #EAE4D4;
     --text-muted: #6b7060;
     --radius: 4px;
     --radius-lg: 12px;
   }
-
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cream);
-    color: var(--charcoal);
-    line-height: 1.65;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: 'Kanit', sans-serif;
-    line-height: 1.15;
-    font-weight: 700;
-  }
-
-  p { font-family: 'Inter', sans-serif; }
-
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.65; overflow-x: hidden; }
+  h1,h2,h3,h4 { font-family: 'Kanit', sans-serif; line-height: 1.15; font-weight: 700; }
   a { color: inherit; text-decoration: none; }
 
-  img { max-width: 100%; display: block; }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 2rem;
-    transition: background 0.3s, box-shadow 0.3s;
-  }
-  nav.scrolled {
-    background: var(--charcoal);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-  }
-  .nav-logo {
-    font-family: 'Kanit', sans-serif;
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: var(--cream);
-    letter-spacing: -0.5px;
-  }
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; transition: background .3s, box-shadow .3s; }
+  nav.scrolled { background: var(--charcoal); box-shadow: 0 2px 20px rgba(0,0,0,.3); }
+  .nav-logo { font-family: 'Kanit', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--cream); }
   .nav-logo span { color: var(--lime); }
-  .nav-cta {
-    background: var(--lime);
-    color: var(--charcoal);
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    padding: 0.5rem 1.2rem;
-    border-radius: var(--radius);
-    letter-spacing: 0.02em;
-    transition: background 0.2s, transform 0.15s;
-  }
+  .nav-cta { background: var(--lime); color: var(--charcoal); font-weight: 600; font-size: .85rem; padding: .5rem 1.2rem; border-radius: var(--radius); transition: background .2s, transform .15s; }
   .nav-cta:hover { background: var(--lime-dark); transform: translateY(-1px); }
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    background: var(--charcoal);
-    display: flex; align-items: center;
-    padding: 8rem 2rem 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  #hero::before {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
-    background: var(--lime);
-  }
-  .hero-bg-text {
-    position: absolute;
-    top: 50%; right: -2rem;
-    transform: translateY(-50%);
-    font-family: 'Kanit', sans-serif;
-    font-weight: 900;
-    font-size: clamp(6rem, 18vw, 18rem);
-    color: rgba(255,255,255,0.03);
-    white-space: nowrap;
-    pointer-events: none;
-    user-select: none;
-    line-height: 1;
-  }
+  /* HERO */
+  #hero { min-height: 100vh; background: var(--charcoal); display: flex; align-items: center; padding: 8rem 2rem 5rem; position: relative; overflow: hidden; }
+  #hero::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: var(--lime); }
+  .hero-bg-text { position: absolute; top: 50%; right: -2rem; transform: translateY(-50%); font-family: 'Kanit', sans-serif; font-weight: 900; font-size: clamp(6rem,18vw,18rem); color: rgba(255,255,255,.03); white-space: nowrap; pointer-events: none; line-height: 1; }
   .hero-inner { max-width: 760px; position: relative; z-index: 1; }
-  .hero-pretag {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--lime);
-    border: 1px solid var(--lime);
-    padding: 0.3rem 0.8rem;
-    border-radius: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  .hero-title {
-    font-family: 'Kanit', sans-serif;
-    font-weight: 900;
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    color: var(--cream);
-    letter-spacing: -1px;
-    margin-bottom: 0.25rem;
-    line-height: 1.0;
-  }
+  .hero-pretag { display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--lime); border: 1px solid var(--lime); padding: .3rem .8rem; border-radius: 2rem; margin-bottom: 1.5rem; }
+  .hero-title { font-family: 'Kanit', sans-serif; font-weight: 900; font-size: clamp(3.5rem,9vw,7rem); color: var(--cream); letter-spacing: -1px; margin-bottom: .25rem; line-height: 1.0; }
   .hero-title .dot { color: var(--lime); }
-  .hero-subtitle {
-    font-family: 'Kanit', sans-serif;
-    font-weight: 400;
-    font-size: clamp(1.2rem, 3vw, 1.7rem);
-    color: rgba(234,228,212,0.75);
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-  }
-  .hero-body {
-    font-size: 1rem;
-    color: rgba(234,228,212,0.6);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
-    line-height: 1.7;
-  }
-  .hero-cta-group { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--lime);
-    color: var(--charcoal);
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 0.9rem 1.8rem;
-    border-radius: var(--radius);
-    transition: background 0.2s, transform 0.15s;
-    border: none; cursor: pointer;
-  }
+  .hero-subtitle { font-family: 'Kanit', sans-serif; font-weight: 400; font-size: clamp(1.2rem,3vw,1.7rem); color: rgba(234,228,212,.75); margin-bottom: 1.5rem; line-height: 1.3; }
+  .hero-body { font-size: 1rem; color: rgba(234,228,212,.6); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7; }
+  .hero-cta-group { display: flex; flex-direction: column; gap: .75rem; align-items: flex-start; }
+  .btn-primary { display: inline-flex; align-items: center; gap: .5rem; background: var(--lime); color: var(--charcoal); font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; padding: .9rem 1.8rem; border-radius: var(--radius); transition: background .2s, transform .15s; border: none; cursor: pointer; }
   .btn-primary:hover { background: var(--lime-dark); transform: translateY(-2px); }
-  .btn-primary .arrow { font-size: 1.2rem; }
-  .hero-micro {
-    font-size: 0.78rem;
-    color: rgba(234,228,212,0.4);
-    font-style: italic;
-  }
-  .hero-pillars {
-    display: flex; gap: 2rem;
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .hero-pillar-item {
-    display: flex; flex-direction: column; gap: 0.25rem;
-  }
-  .hero-pillar-icon {
-    font-size: 1.4rem;
-    margin-bottom: 0.25rem;
-  }
-  .hero-pillar-label {
-    font-family: 'Kanit', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--cream);
-  }
-  .hero-pillar-sub {
-    font-size: 0.75rem;
-    color: rgba(234,228,212,0.45);
-  }
+  .hero-micro { font-size: .78rem; color: rgba(234,228,212,.4); font-style: italic; }
+  .hero-pillars { display: flex; gap: 2rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.08); flex-wrap: wrap; }
+  .hero-pillar-item { display: flex; flex-direction: column; gap: .25rem; }
+  .hero-pillar-icon { font-size: 1.4rem; margin-bottom: .25rem; }
+  .hero-pillar-label { font-family: 'Kanit', sans-serif; font-weight: 600; font-size: .9rem; color: var(--cream); }
+  .hero-pillar-sub { font-size: .75rem; color: rgba(234,228,212,.45); }
 
-  /* ── SECTION COMMONS ── */
+  /* COMMONS */
   section { padding: 5rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--forest);
-    margin-bottom: 0.75rem;
-    display: block;
-  }
+  .section-label { font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--forest); margin-bottom: .75rem; display: block; }
   .section-label.light { color: var(--lime); }
-  .section-title {
-    font-size: clamp(2rem, 4.5vw, 3rem);
-    margin-bottom: 1rem;
-    font-weight: 900;
-  }
-  .section-intro {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    max-width: 580px;
-    margin-bottom: 3rem;
-    line-height: 1.7;
-  }
-  .section-intro.light { color: rgba(234,228,212,0.65); }
+  .section-title { font-size: clamp(2rem,4.5vw,3rem); margin-bottom: 1rem; font-weight: 900; }
+  .section-intro { font-size: 1.05rem; color: var(--text-muted); max-width: 580px; margin-bottom: 3rem; line-height: 1.7; }
+  .section-intro.light { color: rgba(234,228,212,.65); }
 
-  /* ── PILLARS ── */
+  /* PILLARS */
   #pillars { background: var(--cream); }
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .pillar-card {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    border: 1px solid rgba(45,80,22,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .pillar-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: var(--lime);
-  }
-  .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(45,80,22,0.12); }
-  .pillar-number {
-    font-family: 'Kanit', sans-serif;
-    font-weight: 900;
-    font-size: 3.5rem;
-    color: rgba(45,80,22,0.08);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  .pillar-icon-badge {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 48px; height: 48px;
-    background: var(--forest);
-    border-radius: 10px;
-    margin-bottom: 1.25rem;
-  }
+  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .pillar-card { background: var(--white); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid rgba(45,80,22,.1); transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden; }
+  .pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--lime); }
+  .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(45,80,22,.12); }
+  .pillar-number { font-family: 'Kanit', sans-serif; font-weight: 900; font-size: 3.5rem; color: rgba(45,80,22,.08); line-height: 1; margin-bottom: .5rem; }
+  .pillar-icon-badge { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--forest); border-radius: 10px; margin-bottom: 1.25rem; }
   .pillar-icon-badge svg { width: 24px; height: 24px; fill: var(--lime); }
-  .pillar-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    color: var(--charcoal);
-  }
-  .pillar-card p {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .pillar-link {
-    display: inline-block;
-    margin-top: 1.25rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--forest);
-    letter-spacing: 0.02em;
-  }
+  .pillar-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: .75rem; color: var(--charcoal); }
+  .pillar-card p { font-size: .92rem; color: var(--text-muted); line-height: 1.7; }
+  .pillar-link { display: inline-block; margin-top: 1.25rem; font-size: .85rem; font-weight: 600; color: var(--forest); }
   .pillar-link:hover { text-decoration: underline; }
 
-  /* ── WHO IT'S FOR ── */
+  /* FOR YOU */
   #for-you { background: var(--forest); }
-  #for-you .section-title { color: var(--cream); }
-  .audience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .audience-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(194,211,72,0.2);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .audience-card:hover {
-    background: rgba(194,211,72,0.08);
-    border-color: rgba(194,211,72,0.5);
-  }
-  .audience-tag {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: var(--lime);
-    color: var(--charcoal);
-    padding: 0.2rem 0.7rem;
-    border-radius: 2rem;
-    margin-bottom: 1rem;
-  }
-  .audience-card h3 {
-    font-size: 1.3rem;
-    color: var(--cream);
-    margin-bottom: 0.75rem;
-  }
-  .audience-card p {
-    font-size: 0.9rem;
-    color: rgba(234,228,212,0.65);
-    line-height: 1.75;
-    margin-bottom: 1.25rem;
-  }
-  .audience-cta {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--lime);
-    display: inline-flex; align-items: center; gap: 0.35rem;
-  }
+  .audience-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .audience-card { background: rgba(255,255,255,.05); border: 1px solid rgba(194,211,72,.2); border-radius: var(--radius-lg); padding: 2rem; transition: background .2s, border-color .2s; }
+  .audience-card:hover { background: rgba(194,211,72,.08); border-color: rgba(194,211,72,.5); }
+  .audience-tag { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--lime); color: var(--charcoal); padding: .2rem .7rem; border-radius: 2rem; margin-bottom: 1rem; }
+  .audience-card h3 { font-size: 1.3rem; color: var(--cream); margin-bottom: .75rem; }
+  .audience-card p { font-size: .9rem; color: rgba(234,228,212,.65); line-height: 1.75; margin-bottom: 1.25rem; }
+  .audience-cta { font-size: .85rem; font-weight: 600; color: var(--lime); }
   .audience-cta:hover { text-decoration: underline; }
 
-  /* ── WHY ── */
+  /* WHY */
   #why { background: var(--cream); }
-  .why-intro-block {
-    display: flex; align-items: flex-start;
-    gap: 3rem;
-    margin-bottom: 3.5rem;
-    flex-wrap: wrap;
-  }
+  .why-intro-block { display: flex; align-items: flex-start; gap: 3rem; margin-bottom: 3.5rem; flex-wrap: wrap; }
   .why-intro-block .section-title { flex: 1; min-width: 260px; }
-  .why-intro-text {
-    flex: 1; min-width: 260px;
-    font-size: 1rem;
-    color: var(--text-muted);
-    line-height: 1.75;
-    padding-top: 0.5rem;
-  }
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.25rem;
-  }
-  .benefit-item {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    display: flex; gap: 1rem; align-items: flex-start;
-    border: 1px solid rgba(45,80,22,0.08);
-    transition: border-color 0.2s;
-  }
+  .why-intro-text { flex: 1; min-width: 260px; font-size: 1rem; color: var(--text-muted); line-height: 1.75; padding-top: .5rem; }
+  .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1.25rem; }
+  .benefit-item { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; border: 1px solid rgba(45,80,22,.08); transition: border-color .2s; }
   .benefit-item:hover { border-color: var(--lime); }
-  .benefit-dot {
-    flex-shrink: 0;
-    width: 10px; height: 10px;
-    background: var(--lime);
-    border-radius: 50%;
-    margin-top: 0.45rem;
-  }
-  .benefit-item h4 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.35rem;
-    color: var(--charcoal);
-  }
-  .benefit-item p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.65;
-  }
+  .benefit-dot { flex-shrink: 0; width: 10px; height: 10px; background: var(--lime); border-radius: 50%; margin-top: .45rem; }
+  .benefit-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: .35rem; color: var(--charcoal); }
+  .benefit-item p { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
 
-  /* ── HOW IT WORKS ── */
+  /* HOW */
   #how { background: var(--charcoal); }
-  #how .section-title { color: var(--cream); }
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 0;
-    margin-top: 3rem;
-    position: relative;
-  }
-  .step {
-    padding: 2rem;
-    border-left: 1px solid rgba(255,255,255,0.08);
-    position: relative;
-  }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); margin-top: 3rem; }
+  .step { padding: 2rem; border-left: 1px solid rgba(255,255,255,.08); }
   .step:first-child { border-left: none; }
-  .step-number {
-    font-family: 'Kanit', sans-serif;
-    font-weight: 900;
-    font-size: 4rem;
-    color: var(--lime);
-    line-height: 1;
-    margin-bottom: 1rem;
-    opacity: 0.9;
-  }
-  .step h3 {
-    font-size: 1.2rem;
-    color: var(--cream);
-    margin-bottom: 0.65rem;
-  }
-  .step p {
-    font-size: 0.9rem;
-    color: rgba(234,228,212,0.55);
-    line-height: 1.7;
-  }
-  .steps-cta {
-    margin-top: 3rem;
-    text-align: center;
-  }
+  .step-number { font-family: 'Kanit', sans-serif; font-weight: 900; font-size: 4rem; color: var(--lime); line-height: 1; margin-bottom: 1rem; }
+  .step h3 { font-size: 1.2rem; color: var(--cream); margin-bottom: .65rem; }
+  .step p { font-size: .9rem; color: rgba(234,228,212,.55); line-height: 1.7; }
+  .steps-cta { margin-top: 3rem; text-align: center; }
 
-  /* ── FAQ ── */
+  /* FAQ */
   #faq { background: var(--white); }
-  .faq-layout {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    align-items: start;
-  }
+  .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
   .faq-sidebar .section-title { font-size: 2.2rem; }
-  .faq-sidebar p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-top: 1rem;
-    line-height: 1.7;
-  }
-  .faq-sidebar .btn-primary { margin-top: 2rem; font-size: 0.9rem; }
-  .faq-list { display: flex; flex-direction: column; gap: 0; }
-  .faq-item {
-    border-bottom: 1px solid rgba(45,80,22,0.1);
-    overflow: hidden;
-  }
-  .faq-question {
-    width: 100%;
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.2rem 0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--charcoal);
-    transition: color 0.2s;
-  }
-  .faq-question:hover { color: var(--forest); }
-  .faq-question.open { color: var(--forest); }
-  .faq-icon {
-    flex-shrink: 0;
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: var(--cream);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: transform 0.3s, background 0.2s;
-    color: var(--forest);
-  }
-  .faq-question.open .faq-icon {
-    transform: rotate(45deg);
-    background: var(--lime);
-    color: var(--charcoal);
-  }
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.35s ease;
-  }
+  .faq-sidebar p { color: var(--text-muted); font-size: .95rem; margin-top: 1rem; line-height: 1.7; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid rgba(45,80,22,.1); }
+  .faq-question { width: 100%; background: none; border: none; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; font-family: 'Inter', sans-serif; font-weight: 600; font-size: .95rem; color: var(--charcoal); transition: color .2s; }
+  .faq-question:hover, .faq-question.open { color: var(--forest); }
+  .faq-icon { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: transform .3s, background .2s; color: var(--forest); }
+  .faq-question.open .faq-icon { transform: rotate(45deg); background: var(--lime); color: var(--charcoal); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; }
   .faq-answer.open { max-height: 200px; padding-bottom: 1.2rem; }
-  .faq-answer p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.75;
-  }
+  .faq-answer p { font-size: .9rem; color: var(--text-muted); line-height: 1.75; }
 
-  /* ── FORM ── */
+  /* FORM */
   #form { background: var(--forest); }
-  #form .section-title { color: var(--cream); }
-  .form-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .form-intro-text {
-    color: rgba(234,228,212,0.65);
-    font-size: 1rem;
-    line-height: 1.75;
-    margin-top: 1rem;
-  }
-  .form-values {
-    margin-top: 2rem;
-    display: flex; flex-direction: column; gap: 0.75rem;
-  }
-  .form-value-item {
-    display: flex; align-items: center; gap: 0.65rem;
-    font-size: 0.88rem;
-    color: rgba(234,228,212,0.7);
-  }
-  .form-value-dot {
-    width: 6px; height: 6px;
-    background: var(--lime);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .contact-form {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(194,211,72,0.2);
-    border-radius: var(--radius-lg);
-    padding: 2.5rem;
-  }
+  .form-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .form-intro-text { color: rgba(234,228,212,.65); font-size: 1rem; line-height: 1.75; margin-top: 1rem; }
+  .form-values { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
+  .form-value-item { display: flex; align-items: center; gap: .65rem; font-size: .88rem; color: rgba(234,228,212,.7); }
+  .form-value-dot { width: 6px; height: 6px; background: var(--lime); border-radius: 50%; flex-shrink: 0; }
+  .contact-form { background: rgba(255,255,255,.06); border: 1px solid rgba(194,211,72,.2); border-radius: var(--radius-lg); padding: 2.5rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-  .form-group label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: rgba(234,228,212,0.6);
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(194,211,72,0.2);
-    border-radius: var(--radius);
-    padding: 0.75rem 1rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    color: var(--cream);
-    width: 100%;
-    transition: border-color 0.2s, background 0.2s;
-    outline: none;
-    -webkit-appearance: none;
-  }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: rgba(234,228,212,0.3); }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--lime);
-    background: rgba(255,255,255,0.12);
-  }
+  .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+  .form-group label { font-size: .78rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: rgba(234,228,212,.6); }
+  .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,.08); border: 1px solid rgba(194,211,72,.2); border-radius: var(--radius); padding: .75rem 1rem; font-family: 'Inter', sans-serif; font-size: .9rem; color: var(--cream); width: 100%; transition: border-color .2s, background .2s; outline: none; -webkit-appearance: none; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(234,228,212,.3); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--lime); background: rgba(255,255,255,.12); }
   .form-group select option { background: var(--forest); color: var(--cream); }
   .form-group textarea { resize: vertical; min-height: 100px; }
-  .form-submit { width: 100%; margin-top: 0.5rem; justify-content: center; font-size: 1rem; padding: 1rem; }
-  .form-privacy {
-    font-size: 0.75rem;
-    color: rgba(234,228,212,0.35);
-    text-align: center;
-    margin-top: 0.75rem;
-    line-height: 1.5;
-  }
-  .form-privacy a { text-decoration: underline; opacity: 0.7; }
-  .thank-you {
-    display: none;
-    text-align: center;
-    padding: 3rem 2rem;
-  }
+  .form-submit { width: 100%; margin-top: .5rem; justify-content: center; font-size: 1rem; padding: 1rem; }
+  .form-privacy { font-size: .75rem; color: rgba(234,228,212,.35); text-align: center; margin-top: .75rem; line-height: 1.5; }
+  .form-privacy a { text-decoration: underline; opacity: .7; }
+
+  /* FORM STATES */
+  .form-error { display: none; background: rgba(220,50,50,.15); border: 1px solid rgba(220,50,50,.4); border-radius: var(--radius); padding: .75rem 1rem; font-size: .85rem; color: #ffaaaa; margin-bottom: 1rem; }
+  .form-error.visible { display: block; }
+  .thank-you { display: none; text-align: center; padding: 3rem 2rem; }
   .thank-you.visible { display: block; }
-  .thank-you-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  .thank-you h3 {
-    font-size: 1.5rem;
-    color: var(--cream);
-    margin-bottom: 0.75rem;
-  }
-  .thank-you p {
-    color: rgba(234,228,212,0.6);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
+  .thank-you-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .thank-you h3 { font-size: 1.5rem; color: var(--cream); margin-bottom: .75rem; }
+  .thank-you p { color: rgba(234,228,212,.6); font-size: .95rem; line-height: 1.7; }
 
-  /* ── CLOSING ── */
-  #closing {
-    background: var(--lime);
-    padding: 5rem 2rem;
-    text-align: center;
-  }
-  #closing .section-title {
-    color: var(--charcoal);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    max-width: 640px;
-    margin: 0 auto 1.5rem;
-  }
-  #closing p {
-    color: rgba(39,41,30,0.7);
-    max-width: 520px;
-    margin: 0 auto 2.5rem;
-    font-size: 1rem;
-    line-height: 1.75;
-  }
-  .btn-dark {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--charcoal);
-    color: var(--cream);
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 0.9rem 1.8rem;
-    border-radius: var(--radius);
-    transition: opacity 0.2s, transform 0.15s;
-    border: none; cursor: pointer;
-  }
-  .btn-dark:hover { opacity: 0.85; transform: translateY(-2px); }
+  /* CLOSING */
+  #closing { background: var(--lime); padding: 5rem 2rem; text-align: center; }
+  #closing .section-title { color: var(--charcoal); font-size: clamp(2rem,5vw,3.5rem); max-width: 640px; margin: 0 auto 1.5rem; }
+  #closing p { color: rgba(39,41,30,.7); max-width: 520px; margin: 0 auto 2.5rem; font-size: 1rem; line-height: 1.75; }
+  .btn-dark { display: inline-flex; align-items: center; gap: .5rem; background: var(--charcoal); color: var(--cream); font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; padding: .9rem 1.8rem; border-radius: var(--radius); transition: opacity .2s, transform .15s; border: none; cursor: pointer; }
+  .btn-dark:hover { opacity: .85; transform: translateY(-2px); }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--charcoal);
-    padding: 3rem 2rem;
-    color: rgba(234,228,212,0.5);
-  }
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-  .footer-brand .nav-logo { font-size: 1.6rem; display: block; margin-bottom: 0.5rem; }
-  .footer-brand p { font-size: 0.85rem; line-height: 1.65; margin-top: 0.5rem; }
-  .footer-col h4 {
-    font-family: 'Kanit', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--cream);
-    margin-bottom: 0.75rem;
-  }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-  .footer-col ul li a { font-size: 0.85rem; transition: color 0.2s; }
+  /* FOOTER */
+  footer { background: var(--charcoal); padding: 3rem 2rem; color: rgba(234,228,212,.5); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .footer-brand .nav-logo { font-size: 1.6rem; display: block; margin-bottom: .5rem; }
+  .footer-brand p { font-size: .85rem; line-height: 1.65; margin-top: .5rem; }
+  .footer-col h4 { font-family: 'Kanit', sans-serif; font-size: .85rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--cream); margin-bottom: .75rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+  .footer-col ul li a { font-size: .85rem; transition: color .2s; }
   .footer-col ul li a:hover { color: var(--lime); }
-  .footer-bottom {
-    max-width: 1100px;
-    margin: 1.5rem auto 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.78rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .footer-bottom { max-width: 1100px; margin: 1.5rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: .78rem; flex-wrap: wrap; gap: .5rem; }
   .footer-bottom a:hover { color: var(--lime); }
 
-  /* ── DIVIDER ── */
-  .dam-divider {
-    height: 8px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--lime) 0px,
-      var(--lime) 20px,
-      var(--lime-dark) 20px,
-      var(--lime-dark) 22px
-    );
-    opacity: 0.6;
-  }
+  .dam-divider { height: 8px; background: repeating-linear-gradient(90deg, var(--lime) 0px, var(--lime) 20px, var(--lime-dark) 20px, var(--lime-dark) 22px); opacity: .6; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    section { padding: 3.5rem 1.25rem; }
-    .hero-pillars { flex-wrap: wrap; gap: 1rem; }
-    .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
-    .form-layout { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .form-row { grid-template-columns: 1fr; }
-    .steps-grid { grid-template-columns: 1fr; }
-    .step { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
-    .step:first-child { border-top: none; }
-    nav { padding: 0.875rem 1.25rem; }
-  }
-
-  /* ── WHATSAPP FLOAT ── */
-  .wa-float {
-    position: fixed;
-    bottom: 1.5rem; right: 1.5rem;
-    z-index: 200;
-    background: #25D366;
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    transition: transform 0.2s;
-  }
+  /* WHATSAPP */
+  .wa-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; background: #25D366; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,.25); transition: transform .2s; }
   .wa-float:hover { transform: scale(1.1); }
   .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 3.5rem 1.25rem; }
+    .faq-layout, .form-layout, .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .step { border-left: none; border-top: 1px solid rgba(255,255,255,.08); }
+    .step:first-child { border-top: none; }
+    nav { padding: .875rem 1.25rem; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">Biber<span>Lager</span></a>
   <a href="#form" class="nav-cta">Interesse anmelden</a>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg-text">BIBER</div>
   <div class="hero-inner">
@@ -720,7 +207,7 @@
     <p class="hero-subtitle">Lagerraum. Büros. Stellplätze.<br>Alles, was dein Zuhause — oder dein Betrieb — zum Atmen braucht.</p>
     <p class="hero-body">BiberLager ist ein Raumkonzept für Menschen, die vorankommen wollen. Lagere deine Sachen, führe dein Unternehmen, park deinen Transporter. Alles an einem Ort. Alles zu deinen Bedingungen.</p>
     <div class="hero-cta-group">
-      <a href="#form" class="btn-primary">Jetzt frühen Zugang sichern <span class="arrow">→</span></a>
+      <a href="#form" class="btn-primary">Jetzt frühen Zugang sichern <span>→</span></a>
       <span class="hero-micro">Kein Druck. Kein Spam. Nur ein kurzes Gespräch über das, was du brauchst.</span>
     </div>
     <div class="hero-pillars">
@@ -745,82 +232,65 @@
 
 <div class="dam-divider"></div>
 
-<!-- PILLARS -->
 <section id="pillars">
   <div class="container">
     <span class="section-label">Was wir bieten</span>
     <h2 class="section-title">Eine Adresse.<br>Drei Lösungen.</h2>
     <p class="section-intro">Die meisten Anbieter machen eine Sache. BiberLager macht drei — und alles unter einem Dach.</p>
     <div class="pillars-grid">
-
       <div class="pillar-card">
         <div class="pillar-number">01</div>
-        <div class="pillar-icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zm0 11H4V9h16v9zM9 3h6v2H9z"/></svg>
-        </div>
+        <div class="pillar-icon-badge"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zm0 11H4V9h16v9zM9 3h6v2H9z"/></svg></div>
         <h3>Ein Platz für alles, was du gerade nicht brauchst.</h3>
         <p>Saisonware, Geschäftsmaterial, die Kisten vom letzten Umzug. Trocken, sicher, 24/7 erreichbar. Von deinen Händen weg. Zu deinen Bedingungen.</p>
         <a href="#form" class="pillar-link">Interesse anmelden →</a>
       </div>
-
       <div class="pillar-card">
         <div class="pillar-number">02</div>
-        <div class="pillar-icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8v8l-8 4-8-4V8l8-3.82zM12 6a4 4 0 100 8 4 4 0 000-8zm0 2a2 2 0 110 4 2 2 0 010-4z"/></svg>
-        </div>
+        <div class="pillar-icon-badge"><svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-5h2v5h6v-8h3L12 3zm0 2.7L19 12v7h-4v-5H9v5H5v-7l7-6.3z"/></svg></div>
         <h3>Dein erstes richtiges Büro. Ohne Fünfjahresvertrag.</h3>
-        <p>Einzugsfertige Arbeitsbereiche für kleine Teams und Einzelkämpfer. Eine echte Adresse, echte Wände, ein echter Schreibtisch. Kein Hotdesk. Kein Küchentisch. Einfach ein Ort, wo Arbeit passiert.</p>
+        <p>Einzugsfertige Arbeitsbereiche für kleine Teams und Einzelkämpfer. Eine echte Adresse, echte Wände, ein echter Schreibtisch. Kein Hotdesk. Kein Küchentisch.</p>
         <a href="#form" class="pillar-link">Interesse anmelden →</a>
       </div>
-
       <div class="pillar-card">
         <div class="pillar-number">03</div>
-        <div class="pillar-icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M18.92 5.01C18.72 4.42 18.16 4 17.5 4h-11c-.66 0-1.21.42-1.42 1.01L3 11v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 6h10.29l1.08 3.11H5.77L6.85 6zM19 17H5v-6h14v6zM7.5 14c-.83 0-1.5-.67-1.5-1.5S6.67 11 7.5 11s1.5.67 1.5 1.5S8.33 14 7.5 14zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-        </div>
+        <div class="pillar-icon-badge"><svg viewBox="0 0 24 24"><path d="M18.92 5.01C18.72 4.42 18.16 4 17.5 4h-11c-.66 0-1.21.42-1.42 1.01L3 11v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 6h10.29l1.08 3.11H5.77L6.85 6zM19 17H5v-6h14v6z"/></svg></div>
         <h3>Dein Transporter hat jetzt auch ein Zuhause.</h3>
         <p>Sicherer Stellplatz für Autos, Transporter und Firmenfahrzeuge. Direkt vor Ort, 24/7 erreichbar — weil dein Zeitplan keine Öffnungszeiten kennt.</p>
         <a href="#form" class="pillar-link">Interesse anmelden →</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- WHO IT'S FOR -->
 <section id="for-you">
   <div class="container">
     <span class="section-label light">Für wen ist das?</span>
     <h2 class="section-title" style="color:var(--cream)">Kommt dir das<br>bekannt vor?</h2>
     <p class="section-intro light">BiberLager wurde für drei Arten von Menschen entworfen. Wenn du eine davon bist, weißt du es sofort.</p>
     <div class="audience-grid">
-
       <div class="audience-card">
         <span class="audience-tag">Privatpersonen</span>
         <h3>Du hast zu viel Zeug zu Hause.</h3>
-        <p>Du bist mit den besten Absichten eingezogen. Dann kam das Leben. Drei Sets Skiausrüstung, eine Gitarre die du seit zwei Jahren nicht mehr gespielt hast, Kisten vom letzten Umzug. Dein Zuhause sollte sich wie ein Zuhause anfühlen — nicht wie ein Lager. BiberLager gibt dir deinen Raum zurück.</p>
+        <p>Du bist mit den besten Absichten eingezogen. Dann kam das Leben. Drei Sets Skiausrüstung, Kisten vom letzten Umzug, das ganze "Vielleicht-irgendwann"-Zeug. Dein Zuhause sollte sich wie ein Zuhause anfühlen — nicht wie ein Lager. BiberLager gibt dir deinen Raum zurück.</p>
         <a href="#form" class="audience-cta">Das bin ich — mehr erfahren →</a>
       </div>
-
       <div class="audience-card">
         <span class="audience-tag">Startups & KMU</span>
         <h3>Du führst dein Unternehmen vom Küchentisch.</h3>
-        <p>Du hast Kunden, Ambitionen und einen Laptop auf einem Stapel Rechnungen. Du brauchst eine professionelle Adresse, einen ruhigen Raum für Telefonate und irgendwo für dein Material außerhalb des Flurs. Noch kein Fünfjahresvertrag. Aber eine echte Basis — jetzt.</p>
+        <p>Du hast Kunden, Ambitionen und einen Laptop auf einem Stapel Rechnungen. Du brauchst eine professionelle Adresse, einen ruhigen Raum für Telefonate, irgendwo für dein Material außerhalb des Flurs. Noch kein Fünfjahresvertrag — aber eine echte Basis. Jetzt.</p>
         <a href="#form" class="audience-cta">Das bin ich — mehr erfahren →</a>
       </div>
-
       <div class="audience-card">
         <span class="audience-tag">Handwerk & Gewerbe</span>
         <h3>Dein Betrieb lebt im Transporter — und das ist ein Problem.</h3>
-        <p>Du bist Elektriker, Solartechniker, Installateur oder Tischler. Materialien, Werkzeuge, Team, Kundschaft — alles gleichzeitig. Dein "Büro" ist der Beifahrersitz, dein "Lager" ist überall da, wo's gerade passt. Du brauchst eine Adresse, die alles löst: Material, Büro, Parkplatz.</p>
+        <p>Du bist Elektriker, Solartechniker, Installateur oder Tischler. Materialien, Werkzeuge, Team. Dein "Büro" ist der Beifahrersitz, dein "Lager" ist überall da, wo's gerade passt. Du brauchst eine Adresse, die alles löst: Material, Büro, Parkplatz.</p>
         <a href="#form" class="audience-cta">Das bin ich — mehr erfahren →</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- WHY -->
 <section id="why">
   <div class="container">
     <div class="why-intro-block">
@@ -828,81 +298,29 @@
       <p class="why-intro-text">Der Biber baut keinen Damm um des Bauens willen. Er baut ihn, damit alles andere gedeihen kann. Das sind wir. BiberLager ist der Damm. Du bist das Alles-andere.</p>
     </div>
     <div class="benefits-grid">
-      <div class="benefit-item">
-        <div class="benefit-dot"></div>
-        <div>
-          <h4>Zuverlässig wie ein Biberdamm.</h4>
-          <p>Gebaut für Beständigkeit. Was bei BiberLager steht, hält. Sicherheit, Qualität und eine Anlage, auf die du dich wirklich verlassen kannst.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-dot"></div>
-        <div>
-          <h4>Immer geöffnet. Wirklich.</h4>
-          <p>24 Stunden. 7 Tage. 365 Tage. Schließen. Zweimal klopfen. Erledigt — egal ob es 7 Uhr morgens oder 11 Uhr abends ist.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-dot"></div>
-        <div>
-          <h4>Beste Lage in Oberösterreich.</h4>
-          <p>Horsching — direkt neben dem Flughafen Linz, A1-Anbindung. Optimal erreichbar aus Linz, Wels, Steyr und dem gesamten Zentralraum OÖ.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-dot"></div>
-        <div>
-          <h4>Alles an einem Ort.</h4>
-          <p>Lager, Büro, Parkplatz — eine Adresse, ein Schlüssel, eine Gemeinschaft. Kein Jonglieren zwischen drei verschiedenen Anbietern und drei verschiedenen Rechnungen.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-dot"></div>
-        <div>
-          <h4>Wächst mit dir.</h4>
-          <p>Starte mit einem Lagerraum. Füge ein Büro hinzu, wenn du bereit bist. Upgrade, wenn dein Team wächst. BiberLager skaliert — damit du es nicht musst.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-dot"></div>
-        <div>
-          <h4>Die Kolonie.</h4>
-          <p>Du wirst hier nicht allein sein. BiberLager ist eine Gemeinschaft aus Menschen und Unternehmen, die ihr Ding durchziehen — und sich dabei gelegentlich gegenseitig helfen.</p>
-        </div>
-      </div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div><h4>Zuverlässig wie ein Biberdamm.</h4><p>Gebaut für Beständigkeit. Was bei BiberLager steht, hält. Sicherheit und Qualität, auf die du dich wirklich verlassen kannst.</p></div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div><h4>Immer geöffnet. Wirklich.</h4><p>24 Stunden. 7 Tage. 365 Tage. Schließen. Zweimal klopfen. Erledigt — egal ob 7 Uhr morgens oder 11 Uhr abends.</p></div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div><h4>Beste Lage in Oberösterreich.</h4><p>Horsching — direkt neben dem Flughafen Linz, A1-Anbindung. Optimal erreichbar aus Linz, Wels, Steyr und dem gesamten Zentralraum OÖ.</p></div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div><h4>Alles an einem Ort.</h4><p>Lager, Büro, Parkplatz — eine Adresse, ein Schlüssel, eine Gemeinschaft. Kein Jonglieren zwischen drei verschiedenen Anbietern.</p></div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div><h4>Wächst mit dir.</h4><p>Starte mit einem Lagerraum. Füge ein Büro hinzu, wenn du bereit bist. BiberLager skaliert — damit du es nicht musst.</p></div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div><h4>Die Kolonie.</h4><p>Du wirst hier nicht allein sein. BiberLager ist eine Gemeinschaft aus Menschen und Unternehmen, die ihr Ding durchziehen — und sich dabei helfen.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section id="how">
   <div class="container">
     <span class="section-label light">So einfach geht's</span>
     <h2 class="section-title" style="color:var(--cream)">Drei Schritte.<br>Kein Drama.</h2>
     <div class="steps-grid">
-      <div class="step">
-        <div class="step-number">01</div>
-        <h3>Sag uns, was du brauchst.</h3>
-        <p>Füll das kurze Formular aus. Kein Roman nötig — nur Name, Kontakt und grob, was du suchst. Das reicht uns als ersten Schritt.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">02</div>
-        <h3>Wir melden uns persönlich.</h3>
-        <p>Ein echter Mensch aus dem BiberLager-Team meldet sich — kein Chatbot, kein Skript. Wir hören zu, stellen ein paar Fragen und finden gemeinsam die richtige Lösung.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">03</div>
-        <h3>Einziehen. Zweimal klopfen. Zuhause.</h3>
-        <p>Sobald alles passt: einziehen, Schlüssel in der Hand. Dein Raum gehört dir. Schließen, zweimal klopfen — und los.</p>
-      </div>
+      <div class="step"><div class="step-number">01</div><h3>Sag uns, was du brauchst.</h3><p>Füll das kurze Formular aus. Kein Roman nötig — nur Name, Kontakt und grob, was du suchst.</p></div>
+      <div class="step"><div class="step-number">02</div><h3>Wir melden uns persönlich.</h3><p>Ein echter Mensch aus dem BiberLager-Team meldet sich — kein Chatbot, kein Skript. Wir hören zu und finden gemeinsam die richtige Lösung.</p></div>
+      <div class="step"><div class="step-number">03</div><h3>Einziehen. Zweimal klopfen. Zuhause.</h3><p>Sobald alles passt: einziehen, Schlüssel in der Hand. Dein Raum gehört dir.</p></div>
     </div>
-    <div class="steps-cta">
-      <a href="#form" class="btn-primary">Jetzt starten <span class="arrow">→</span></a>
-    </div>
+    <div class="steps-cta"><a href="#form" class="btn-primary">Jetzt starten →</a></div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
   <div class="container">
     <div class="faq-layout">
@@ -910,56 +328,32 @@
         <span class="section-label">Häufige Fragen</span>
         <h2 class="section-title">Fragen?<br>Gut.<br>Ehrliche<br>Antworten.</h2>
         <p>Wenn deine Frage nicht dabei ist, melden wir uns gerne. Kein Salesgespräch — ein echtes Gespräch.</p>
-        <a href="#form" class="btn-primary" style="margin-top:1.5rem; display:inline-flex;">Kontakt aufnehmen →</a>
+        <a href="#form" class="btn-primary" style="margin-top:1.5rem">Kontakt aufnehmen →</a>
       </div>
       <div class="faq-list">
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Wann öffnet BiberLager? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Wir befinden uns aktuell in der Planungs- und Aufbauphase. Melde jetzt dein Interesse an — du erfährst als Erste:r, wann es losgeht, und sicherst dir Priority Access zu den besten verfügbaren Flächen.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Was kostet es? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Das hängt davon ab, was du brauchst: Lagergröße, Büroart, Stellplatzbedarf. Wir haben lieber ein kurzes Gespräch und geben dir eine Zahl, die wirklich zu deiner Situation passt — statt einer Liste, die für niemanden stimmt. Meld dich einfach.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Ist es wirklich 24/7 zugänglich? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Ja. Du kannst deine Einheit oder dein Büro rund um die Uhr nutzen, jeden Tag im Jahr. Weil gute Ideen und dringende Lieferungen keine Öffnungszeiten haben.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Kann ich dort meine Geschäftsadresse anmelden? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Ja — wenn du ein Büro mietest, ist deine BiberLager-Adresse deine Geschäftsadresse. Echte Straße, echte Postleitzahl, echtes Oberösterreich.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Ist die Anlage sicher? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Wie ein Biberdamm — oder besser. Videoüberwachung, gesicherter Zugangskontrolle und eine Anlage, die von Grund auf mit Sicherheit im Sinn gebaut wurde. Schließen. Zweimal klopfen. Erledigt.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Was, wenn sich meine Bedürfnisse ändern? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Genau dafür ist BiberLager gemacht. Starte mit einem Lager, füge ein Büro hinzu wenn das Team wächst, wechsle in eine größere Einheit wenn das Business anzieht. Wir bevorzugen langfristige Mitglieder gegenüber starren Verträgen.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Kann ich den Standort vorher besichtigen? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Absolut. Sobald wir der Eröffnung näher kommen, organisieren wir Besichtigungen für alle auf der Early-Access-Liste. Melde dich jetzt an und du bist als Erste:r dran.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">Ich bin noch nicht sicher, was ich brauche. Kann ich trotzdem Kontakt aufnehmen? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Das ist sogar der beste Zeitpunkt. Wir helfen dir gerne herausfinden, was wirklich Sinn macht — unverbindlich, ohne Druck, auf Augenhöhe.</p></div>
-        </div>
-
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Wann öffnet BiberLager? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Wir befinden uns aktuell in der Planungs- und Aufbauphase. Melde jetzt dein Interesse an — du erfährst als Erste:r, wann es losgeht, und sicherst dir Priority Access zu den besten verfügbaren Flächen.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Was kostet es? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Das hängt davon ab, was du brauchst. Wir haben lieber ein kurzes Gespräch und geben dir eine Zahl, die wirklich zu deiner Situation passt — statt einer Liste, die für niemanden stimmt. Meld dich einfach.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Ist es wirklich 24/7 zugänglich? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Ja. Du kannst deine Einheit oder dein Büro rund um die Uhr nutzen, jeden Tag im Jahr. Weil gute Ideen und dringende Lieferungen keine Öffnungszeiten haben.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Kann ich dort meine Geschäftsadresse anmelden? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Ja — wenn du ein Büro mietest, ist deine BiberLager-Adresse deine Geschäftsadresse. Echte Straße, echte Postleitzahl, echtes Oberösterreich.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Ist die Anlage sicher? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Wie ein Biberdamm — oder besser. Videoüberwachung, gesicherter Zugangskontrolle und eine Anlage, die von Grund auf mit Sicherheit im Sinn gebaut wurde.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Was, wenn sich meine Bedürfnisse ändern? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Genau dafür ist BiberLager gemacht. Starte mit einem Lager, füge ein Büro hinzu wenn das Team wächst. Wir bevorzugen langfristige Mitglieder gegenüber starren Verträgen.</p></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Ich bin noch nicht sicher. Kann ich trotzdem Kontakt aufnehmen? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Das ist sogar der beste Zeitpunkt. Wir helfen dir gerne herausfinden, was wirklich Sinn macht — unverbindlich, ohne Druck, auf Augenhöhe.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FORM -->
+<!-- ═══════════════════════════════════════════════════
+     FORMSPREE SETUP INSTRUCTIONS
+     ───────────────────────────────────────────────────
+     1. Go to https://formspree.io and sign up free
+     2. Create a new form — set the notification email
+        to: info@biberlager.at
+     3. Copy your form ID (looks like: xpzgkqrw)
+     4. Replace YOUR_FORM_ID below with that ID
+     5. Save the file and re-upload to Vercel
+     ═══════════════════════════════════════════════════ -->
+
 <section id="form">
   <div class="container">
     <div class="form-layout">
@@ -975,16 +369,25 @@
         </div>
       </div>
       <div>
-        <div class="contact-form" id="contact-form-wrapper">
-          <form id="lead-form" onsubmit="handleSubmit(event)">
+        <div class="contact-form" id="form-wrapper">
+          <div class="form-error" id="form-error">Es gab ein Problem beim Senden. Bitte versuche es erneut oder schreib uns direkt an <a href="mailto:info@biberlager.at" style="color:#ffaaaa">info@biberlager.at</a>.</div>
+          <form
+            id="lead-form"
+            action="https://formspree.io/f/mnjwlgke"
+            method="POST"
+          >
+            <!-- These hidden fields control what Formspree does -->
+            <input type="hidden" name="_subject" value="Neue Anfrage – BiberLager Early Access">
+            <input type="hidden" name="_language" value="de">
+
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">Vorname *</label>
-                <input type="text" id="fname" name="fname" placeholder="Max" required>
+                <input type="text" id="fname" name="vorname" placeholder="Max" required>
               </div>
               <div class="form-group">
                 <label for="lname">Nachname *</label>
-                <input type="text" id="lname" name="lname" placeholder="Mustermann" required>
+                <input type="text" id="lname" name="nachname" placeholder="Mustermann" required>
               </div>
             </div>
             <div class="form-group">
@@ -993,11 +396,11 @@
             </div>
             <div class="form-group">
               <label for="phone">Telefonnummer (optional)</label>
-              <input type="tel" id="phone" name="phone" placeholder="+43 ...">
+              <input type="tel" id="phone" name="telefon" placeholder="+43 ...">
             </div>
             <div class="form-group">
               <label for="need">Was suchst du? *</label>
-              <select id="need" name="need" required>
+              <select id="need" name="interesse" required>
                 <option value="" disabled selected>Bitte auswählen</option>
                 <option>Lagerraum (privat — zu viel Zeug zu Hause)</option>
                 <option>Gewerbefläche / Lager für mein Unternehmen</option>
@@ -1008,16 +411,18 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="message">Erzähl uns kurz von deiner Situation (optional)</label>
-              <textarea id="message" name="message" placeholder="z.B. Ich führe einen kleinen Elektrobetrieb mit 3 Mitarbeitern und brauche Lager für Material sowie ein kleines Büro für die Verwaltung..."></textarea>
+              <label for="message">Kurz zu deiner Situation (optional)</label>
+              <textarea id="message" name="nachricht" placeholder="z.B. Ich führe einen kleinen Elektrobetrieb mit 3 Mitarbeitern und brauche Lager für Material sowie ein kleines Büro..."></textarea>
             </div>
-            <button type="submit" class="btn-primary form-submit">Interesse anmelden <span class="arrow">→</span></button>
+            <button type="submit" class="btn-primary form-submit" id="submit-btn">
+              Interesse anmelden →
+            </button>
             <p class="form-privacy">Deine Daten werden ausschließlich zur Beantwortung deiner Anfrage verwendet. Kein Newsletter. Kein Spam. <a href="#">Datenschutz</a> · <a href="#">Impressum</a></p>
           </form>
           <div class="thank-you" id="thank-you">
             <div class="thank-you-icon">🦫</div>
             <h3>Willkommen in der Kolonie.</h3>
-            <p>Wir haben deine Anfrage erhalten und melden uns innerhalb von 24 Stunden. In der Zwischenzeit: Biber La Vida.</p>
+            <p>Wir haben deine Anfrage erhalten und melden uns innerhalb von 24 Stunden bei dir unter <strong style="color:var(--lime)">info@biberlager.at</strong>. In der Zwischenzeit: Biber La Vida.</p>
           </div>
         </div>
       </div>
@@ -1025,21 +430,19 @@
   </div>
 </section>
 
-<!-- CLOSING -->
 <section id="closing">
   <div class="container">
     <h2 class="section-title">Du baust dein Ding.<br>Wir halten den Raum.</h2>
     <p>BiberLager entsteht, weil Lagern einfach sein sollte, Büros keinen Anwalt brauchen sollten und kleine Unternehmen eine echte Basis verdienen. Wir bauen etwas Gutes in Horsching — und wir würden uns freuen, wenn du dabei bist.</p>
-    <a href="#form" class="btn-dark">Interesse anmelden <span>→</span></a>
+    <a href="#form" class="btn-dark">Interesse anmelden →</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="nav-logo">Biber<span>Lager</span></span>
-      <p>Damn Good Space.<br>Lagerraum, Büros & Stellplätze in Horsching, Oberösterreich.</p>
+      <p>Damn Good Space.<br>Lagerraum, Büros & Stellplätze<br>in Horsching, Oberösterreich.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
@@ -1052,8 +455,9 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Rechtliches</h4>
+      <h4>Kontakt & Rechtliches</h4>
       <ul>
+        <li><a href="mailto:info@biberlager.at">info@biberlager.at</a></li>
         <li><a href="#">Datenschutz</a></li>
         <li><a href="#">Impressum</a></li>
         <li><a href="#">Cookie-Einstellungen</a></li>
@@ -1061,19 +465,18 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 BiberLager · Horsching, Oberösterreich · <a href="mailto:hallo@biberlager.at">hallo@biberlager.at</a></span>
-    <span style="color:var(--lime); font-family:'Kanit',sans-serif; font-weight:700;">Biber La Vida.</span>
+    <span>© 2025 BiberLager · Horsching, Oberösterreich</span>
+    <span style="color:var(--lime);font-family:'Kanit',sans-serif;font-weight:700;">Biber La Vida.</span>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
 <a class="wa-float" href="https://wa.me/43XXXXXXXXX" title="WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
   // Sticky nav
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
   });
 
@@ -1081,32 +484,45 @@
   function toggleFaq(btn) {
     const answer = btn.nextElementSibling;
     const isOpen = btn.classList.contains('open');
-    // close all
     document.querySelectorAll('.faq-question').forEach(q => {
       q.classList.remove('open');
       q.nextElementSibling.classList.remove('open');
     });
-    if (!isOpen) {
-      btn.classList.add('open');
-      answer.classList.add('open');
-    }
+    if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
   }
 
-  // Form submit
-  function handleSubmit(e) {
+  // Form — Formspree AJAX submission
+  document.getElementById('lead-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    document.getElementById('lead-form').style.display = 'none';
-    document.getElementById('thank-you').classList.add('visible');
-  }
+    const btn = document.getElementById('submit-btn');
+    const errorEl = document.getElementById('form-error');
+    btn.textContent = 'Wird gesendet...';
+    btn.disabled = true;
+    errorEl.classList.remove('visible');
+    try {
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        this.style.display = 'none';
+        document.getElementById('thank-you').classList.add('visible');
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      errorEl.classList.add('visible');
+      btn.textContent = 'Interesse anmelden →';
+      btn.disabled = false;
+    }
+  });
 
-  // Smooth scroll for anchor links
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
 </script>
